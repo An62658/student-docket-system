@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Initiative Name</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+     <style>
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5px;
+        }
+
+        #task-it-logo {
+            font-size: 50px; /* Adjust the font size as needed */
+            font-family: 'Proxima Nova', sans-serif;
+        }
+
+nav {
+            display: flex; /* Display navigation links in the same line */
+            align-items: center; /* Center align the links vertically */
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff; /* Adjust the color as needed */
+            font-size: 17px;
+        }
+
+        /* Add the following styles for the download button */
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: orange;
+            border: none;
+            border-radius: 50px; /* Make it oval-shaped */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #ffA500; /* Darker shade on hover */
+        }
+
+/* The new styles for the About Us section */
+        #about {
+            background-color: #f9f9f9; /* Light gray background color */
+        }
+
+        .about-info-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .about-info {
+            max-width: 300px;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ddd; /* Add a border for each info box */
+            border-radius: 10px;
+            background-color: #fff; /* White background color for each info box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .about-info {
+                max-width: 100%;
+            }
+        }
+
+/* Add these styles for the About Us section */
+.about-info {
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition effect for smooth color change */
+
+    /* Initial styles */
+    background-color: #fff;
+    color: #333; /* Initial text color */
+}
+
+/* Apply the permanent colors */
+.about-info:hover,
+.about-info.permanent {
+    background-color: orange; /* Change background color to orange for the first and last cards */
+    color: white; /* Change text color to white for the first and last cards */
+}
+
+/* Special permanent color for the middle card */
+.special-card.permanent {
+    background-color: black; /* Change background color to black for the middle card */
+    color: white; /* Change text color to white for the middle card */
+}
+/* Add these styles for the split Objectives section */
+#objectives {
+    background-color: #f0f0f0; /* Light background color */
+}
+
+.objectives-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.objective {
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.objective img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .objective {
+        max-width: 100%;
+    }
+    .left-half {
+        order: 2; /* Change the order of the text to appear below images on smaller screens */
+    }
+}
+
+/* Add the following styles for the Learn More button */
+.learn-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.learn-more-button:hover {
+    background-color: #ffA500; /* Darker shade on hover */
+}
+/* Updated CSS for the Projects section */
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.project-card {
+    position: relative;
+    width: 120px;
+    height: 160px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.moving-flashing-card::before {
+    content: attr(data-text);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background-color: #e74c3c; /* Flashing color */
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.moving-flashing-card:hover::before {
+    opacity: 1;
+}
+
+/* Updated styles for the How It Works section */
+#how-it-works {
+    background-color: #f9f9f9; /* Light gray background color */
+}
+
+.how-it-works-card {
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px auto; /* Center the card */
+    border: 1px solid #ddd; /* Add a border for the card */
+    border-radius: 10px;
+    background-color: #000; /* Black background color for the card */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    text-align: center; /* Center-align the text */
+    position: relative; /* Position the card relatively */
+}
+
+.how-it-works-card h2 {
+    margin-top: 0; /* Remove default margin for h2 */
+}
+
+.number-circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+    position: absolute; /* Position the numbers absolutely */
+    top: -15px; /* Adjust the top position to overlap with the card */
+}
+
+.dark-orange {
+    background: radial-gradient(circle at center, #ff8c00 0%, #e74c3c 100%);
+    color: white;
+}
+
+.light-orange {
+    background: radial-gradient(circle at center, #ffae42 0%, #ff8c00 100%);
+    color: white;
+}
+
+.orange {
+    background: radial-gradient(circle at center, #ffa500 0%, #ffae42 100%);
+    color: white;
+}
+
+
+/* Updated styles for the Trending section */
+#trending {
+    background-color: #f9f9f9; /* Light gray background color */
+    overflow: hidden; /* Hide any overflow content */
+}
+
+.trending-card {
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px auto; /* Center the card */
+    border: 1px solid #ddd; /* Add a border for the card */
+    border-radius: 10px;
+    background-color: #ffa500; /* Orange background color for the card */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    text-align: center; /* Center-align the text */
+    position: relative; /* Position the card relatively */
+    z-index: 2; /* Ensure the card is above the image */
+}
+
+.trending-card h2 {
+    margin-top: 0; /* Remove default margin for h2 */
+}
+
+/* Style for the background image */
+#trending img {
+    width: 100%; /* Make sure the image covers the entire container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+border-radius: 10px;
+    margin-top: -40px; /* Adjust the margin to move the image upwards */
+}
+/* Styles for the Get Help Today section */
+#get-help-today {
+    background-color: #f9f9f9; /* Light gray background color */
+}
+
+.oval-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.oval-service {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff; /* White text color */
+    background-color: #ffa500; /* Orange background color for the oval-shaped circle */
+    border-radius: 20px; /* Oval shape */
+}
+
+.oval-service:hover {
+    background-color: #000; /* Black background color on hover */
+    color: #fff; /* White text color on hover */
+}
+.see-all-services {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffa500; /* Orange color for the link */
+    font-weight: bold;
+color: #000; /* Black color for the link on hover */
+}
+
+/* Add this style for orange text */
+    .orange-text {
+        color: #ffA500;
+    }
+
+/* Media query for phone screens */
+        @media only screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                display: none; /* Hide the navigation links by default */
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin-bottom: 10px;
+            }
+
+            #menu-icon {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div id="logo-container">
+            <p id="task-it-logo" style="margin-left: 40px; font-family: 'Arial', sans-serif; font-weight: 900;">Task it</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#objectives">Our Objectives</a></li>
+                <li><a href="#programs">Projects</a></li>
+                <li><a href="#get-involved">How It Works</a></li>
+                <li><a href="#news-updates">Trending</a></li>
+                <li><a href="#contact">Get Help Today</a></li>
+                <li><a href="#gallery">User Reviews</a></li>
+                <li><a href="#faqs">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="section-container">
+        <div class="split-section" style="display: flex; align-items: center; padding: 50px;">
+
+            <!-- Left half for the image -->
+            <div class="left-half" style="flex: 1;">
+                <!-- Replace the placeholder image URL with your actual image -->
+                <img src="your-image-url.jpg" alt="Welcome Image" style="width: 100%; height: auto; border-radius: 20px;">
+            </div>
+
+            <!-- Right half for the text -->
+            <div class="right-half" style="flex: 1; text-align: center;">
+                <h1 style="font-size: 2.5em; margin-bottom: 0.5em;">Welcome to Task it</h1>
+                <p style="color: darkgray; margin-bottom: 1em;">Your platform for innovative solutions and empowerment.</p>
+                <p style="color: darkgray; margin-bottom: 2em;">Join us in our mission to make a positive impact!</p>
+                <button class="download-button">Download the App</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Left half for the text -->
+<div class="left-half" style="flex: 1; text-align: center;">
+    <h2>About Us</h2>
+    <div class="about-info-container">
+        <div class="about-info permanent">
+            <h3>Our Mission</h3>
+            <p>Welcome to Task it, your go-to platform for connecting skilled individuals with job opportunities!</p>
+        </div>
+        <div class="about-info permanent">
+            <h3>What Sets Us Apart</h3>
+            <p>Task it stands out by fostering innovation, creating a strategic employment pool, and ensuring equal opportunities for everyone in the community.</p>
+        </div>
+        <div class="about-info special-card permanent">
+            <h3>Why Choose Task it?</h3>
+            <p>Task it is not just a job-matching platform; it's a community that believes in the potential of each individual. Join us in making a positive impact!</p>
+        </div>
+    </div>
+</div>
+
+    <section id="objectives" class="section-container">
+    <div class="split-section" style="display: flex; align-items: center; padding: 50px;">
+
+        <!-- Left half for the text -->
+<div class="left-half" style="flex: 1; text-align: center;">
+    <h2>Our Objectives</h2>
+    <p style="color: darkgray;">Discover how Task it is dedicated to achieving excellence in employment services and fostering career growth.</p>
+    <button class="download-button">Learn More</button>
+</div>
+
+        <!-- Right half for the image -->
+        <div class="right-half" style="flex: 1;">
+            <!-- Replace the placeholder image URL with your actual image -->
+            <img src="objective-image.jpg" alt="Objective Image" style="width: 100%; height: auto; border-radius: 20px;">
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+<section id="projects" class="section-container">
+    <div class="section-content" style="text-align: center; padding: 50px;">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <!-- Simplified moving and flashing cards with pictures -->
+            <div class="project-card moving-flashing-card">
+                <img src="assembly.jpg" alt="Assembly">
+                <span>Assembly</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="mounting.jpg" alt="Mounting">
+                <span>Mounting</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="moving.jpg" alt="Moving">
+                <span>Moving</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="cleaning.jpg" alt="Cleaning">
+                <span>Cleaning</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="outdoor-help.jpg" alt="Outdoor Help">
+                <span>Outdoor Help</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="home-repairs.jpg" alt="Home Repairs">
+                <span>Home Repairs</span>
+            </div>
+            <div class="project-card moving-flashing-card">
+                <img src="painting.jpg" alt="Painting">
+                <span>Painting</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section id="how-it-works" class="section-container">
+    <div class="split-section" style="display: flex; align-items: center; padding: 50px;">
+
+        <!-- Left half for the image -->
+        <div class="left-half" style="flex: 1;">
+            <!-- Replace the placeholder image URL with your actual image -->
+            <img src="how-it-works-image.jpg" alt="How It Works Image" style="width: 100%; height: auto; border-radius: 20px;">
+        </div>
+
+        <!-- Right half for the text -->
+<div class="right-half" style="flex: 1; text-align: center;">
+    <h2>How It Works</h2>
+    <div class="how-it-works-card">
+        <div class="number-circle dark-orange">1</div>
+        <p>Choose a Tasker by price, skills, and reviews.</p>
+
+        <div class="number-circle light-orange">2</div>
+        <p>Schedule a Tasker as early as today.</p>
+
+        <div class="number-circle orange">3</div>
+        <p>Chat, pay, tip, and review all in one place.</p>
+    </div>
+</div>
+    </div>
+</section>
+
+
+
+    <!-- Section for Trending -->
+<section id="trending" class="section-container">
+    <div class="split-section" style="display: flex; align-items: center; padding: 50px;">
+
+        <!-- Left half for the text card -->
+        <div class="left-half" style="flex: 1; text-align: center;">
+            <div class="trending-card">
+                <h2>Trending</h2>
+                <p>Discover the hottest tasks that will level up your space.</p>
+                <p>Explore these trending tasks and book a skilled Tasker to enjoy the convenience and peace of mind that comes with it all!</p>
+            </div>
+        </div>
+
+        <!-- Right half for the background image -->
+        <div class="right-half" style="flex: 1; position: relative;">
+            <!-- Replace the placeholder image URL with your actual image -->
+            <img src="trending-background.jpg" alt="Trending Background" style="width: 100%; height: auto; border-radius: 20px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; object-fit: cover;">
+        </div>
+    </div>
+</section>
+
+
+    <!-- Section for Get Help Today -->
+<section id="get-help-today" class="section-container">
+    <div class="section-content" style="text-align: center; padding: 50px;">
+        <h2>Get Help Today</h2>
+
+        <!-- Oval-shaped circles for each service -->
+        <div class="oval-services">
+            <div class="oval-service">General Mounting</div>
+            <div class="oval-service">TV Mounting</div>
+            <div class="oval-service">General Furniture Assembly</div>
+            <div class="oval-service">IKEA Assembly</div>
+            <div class="oval-service">Help Moving</div>
+            <div class="oval-service">Cleaning</div>
+            <div class="oval-service">Yard Work</div>
+            <div class="oval-service">Trash & Furniture Removal</div>
+            <div class="oval-service">Lawn Care</div>
+            <div class="oval-service">Hang Art</div>
+            <div class="oval-service">Bed Assembly</div>
+            <div class="oval-service">In-home Furniture Movers</div>
+            <div class="oval-service">Shelf Mounting</div>
+            <div class="oval-service">Light Installation</div>
+            <div class="oval-service">Plumbing Help</div>
+        </div>
+
+        <!-- "See All Services" link -->
+        <a href="#" class="see-all-services">See All Services ></a>
+    </div>
+</section>
+
+
+    <!-- User Reviews section -->
+<section id="user-reviews" class="section-container">
+    <div class="section-content" style="text-align: center; padding: 50px;">
+
+        <!-- Dark orange heading -->
+        <h2 style="color: #ffA500;">User Reviews</h2>
+
+        <!-- Split into two halves vertically -->
+        <div class="reviews-container" style="display: flex; justify-content: space-between;">
+
+            <!-- First half of reviews -->
+            <div class="review" style="width: 48%;">
+                <h3>Elizabeth P. <span class="rating">⭐⭐⭐⭐⭐</span></h3>
+                <p>Vitalii assembled the IKEA Norli drawer chest for me in less than 30 minutes, and he assembled a metal wire shelving unit as well in about 10 minutes. He also fixed a drawer on an already assembled desk so it extends further.</p>
+                <p class="orange-text"> IKEA Furniture Assembly</p>
+            </div>
+
+            <div class="review" style="width: 48%;">
+                <h3>Tiffany B. <span class="rating">⭐⭐⭐⭐⭐</span></h3>
+                <p>David did an awesome job assembling crib and dresser for the nursery. Really appreciate this! He cleaned up the area after his work, organized the boxes for easy disposal and went through the directions with us in the event we have to change crib settings.</p>
+                <p class="orange-text">Service: Furniture Assembly</p>
+            </div>
+
+        </div>
+
+        <!-- Second half of reviews -->
+        <div class="reviews-container" style="display: flex; justify-content: space-between;">
+
+            <div class="review" style="width: 48%;">
+                <h3>Amanda L. <span class="rating">⭐⭐⭐⭐⭐</span></h3>
+                <p>I hired Joe to patch 2 holes on my wall and 1 hole on my ceiling. Joe was great with communication, was fast, professional and did a fantastic job. He even came back to do a second layer on the patches to make it look seamless with the rest of the wall and ceiling.</p>
+                <p class="orange-text">Service: Home Repairs</p>
+            </div>
+
+            <div class="review" style="width: 48%;">
+                <h3>Sabrina K. <span class="rating">⭐⭐⭐⭐⭐</span></h3>
+                <p>Aleksandr was fantastic! He came with all the equipment to do the job, even the hardware I didn't know I would need. He hung a heavy chandelier perfectly and fixed a cabinet to our wall. 100% would hire again.</p>
+                <p class="orange-text">Service: Electrical Help</p>
+            </div>
+
+        </div>
+    </div>
+</section
+
+
+    <!-- End Bar section -->
+<section id="end-bar" class="section-container" style="background-color: #FFA500; color: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+
+    <!-- Follow us! We're friendly text -->
+    <div class="section-content" style="text-align: left;">
+
+        <p style="margin-bottom: 10px; font-size: 16px; font-weight: bold;">Follow us! We're friendly:</p>
+    </div>
+
+    <!-- Social media icons -->
+    <div class="social-icons" style="display: flex; align-items: center;">
+        <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram" style="width: 30px; height: 30px;"></a>
+        <!-- Add more social media icons as needed -->
+    </div>
+
+    <!-- Privacy policy link -->
+    <div class="privacy-policy">
+        <a href="privacy-policy.html" style="color: #fff; text-decoration: none; font-size: 14px;">Privacy Policy</a>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+    <!-- Rest of your content goes here -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    // Toggle navigation menu on small screens
+            const menuIcon = document.getElementById('menu-icon');
+            const nav = document.querySelector('nav');
+
+            menuIcon.addEventListener('click', function () {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
